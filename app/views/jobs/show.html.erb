@@ -1,0 +1,63 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @job %>
+
+<%if user_signed_in?%>
+<h5>Example heading <span class="badge text-bg-secondary" onclick="$('.modal').show();">&#128142; <%=(@job.skill_ids & current_user.skill_ids).length%> des <%=@job.skills.length%> compétences correspondantes </span></h5>
+
+<%end%>
+<%@job.skills.each do |s|%>
+<li>
+<%=s.name%>
+</li>
+<%end%>
+
+
+<div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+<h2 class="modal-title">Edit skills</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="$('.modal').hide();"></button>
+      </div>
+      <div class="modal-body">
+
+<%= form_for(current_user, as: :user, url: registration_path(User), html: { method: :put }) do |f| %>
+  <%= render "users/shared/error_messages", resource: current_user %>
+  <div class="field">
+    <%= f.label :skill_ids, "Compétences en lien avec ce poste" %><br />
+<%=f.collection_check_boxes(:skill_ids, @job.skills, :id, :name) do |b|%>
+  <p><%=b.label(class: "check_box") do%> 
+<%=b.check_box(class: "check_box") %><%=b.text%>
+<%end%>
+
+</p>
+<%end%>
+  </div>
+  <div class="field">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+    
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="$('.modal').hide()" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="$('.modal').hide()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div>
+  <%= link_to "Edit this job", edit_job_path(@job) %> |
+  <%= link_to "Back to jobs", jobs_path %>
+
+  <%= button_to "Destroy this job", @job, method: :delete %>
+</div>
