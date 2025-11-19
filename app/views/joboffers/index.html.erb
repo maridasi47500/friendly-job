@@ -1,15 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Joboffers" %>
+<% content_for :title, "Job offers en interim" %>
 
-<h1>Joboffers</h1>
+<h1>Job offers en interim</h1>
+<%City.all.each do |city|%>
+<%=link_to "offre d'emploi #{city.name}", city%>
+<%end%>
 
-<div id="joboffers">
-  <% @joboffers.each do |joboffer| %>
-    <%= render joboffer %>
-    <p>
-      <%= link_to "Show this joboffer", joboffer %>
-    </p>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <% @joboffers.each do |j| %>
+  <div class="col">
+    <div class="card">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%=j.title%></h5>
+        <p class="card-text"><string><%=j.contract.name%></strong></p>
+      </div>
+    </div>
+  </div>
   <% end %>
 </div>
 

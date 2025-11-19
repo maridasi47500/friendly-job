@@ -17,7 +17,7 @@ class JoboffersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create joboffer" do
     assert_difference("Joboffer.count") do
-      post joboffers_url, params: { joboffer: { city_id: @joboffer.city_id, contract_id: @joboffer.contract_id, dispo: @joboffer.dispo, experience: @joboffer.experience, mydate: @joboffer.mydate, mylength: @joboffer.mylength, status: @joboffer.status } }
+      post joboffers_url, params: { joboffer: { city_id: @joboffer.city_id, contract_id: @joboffer.contract_id, dispo: @joboffer.dispo, experience: @joboffer.experience, mydate: @joboffer.mydate, mylength: @joboffer.mylength, secteur_id: @joboffer.secteur_id, status: @joboffer.status, title: @joboffer.title } }
     end
 
     assert_redirected_to joboffer_url(Joboffer.last)
@@ -34,7 +34,7 @@ class JoboffersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update joboffer" do
-    patch joboffer_url(@joboffer), params: { joboffer: { city_id: @joboffer.city_id, contract_id: @joboffer.contract_id, dispo: @joboffer.dispo, experience: @joboffer.experience, mydate: @joboffer.mydate, mylength: @joboffer.mylength, status: @joboffer.status } }
+    patch joboffer_url(@joboffer), params: { joboffer: { city_id: @joboffer.city_id, contract_id: @joboffer.contract_id, dispo: @joboffer.dispo, experience: @joboffer.experience, mydate: @joboffer.mydate, mylength: @joboffer.mylength, secteur_id: @joboffer.secteur_id, status: @joboffer.status, title: @joboffer.title } }
     assert_redirected_to joboffer_url(@joboffer)
   end
 

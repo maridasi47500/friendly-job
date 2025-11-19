@@ -65,6 +65,6 @@ class JoboffersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def joboffer_params
-      params.expect(joboffer: [ :city_id, :contract_id, :mydate, :mylength, :status, :experience, :dispo ])
+      params.expect(joboffer: [ :title, :secteur_id, :city_id, :contract_id, :mydate, :mylength, :status, :experience, :dispo ])
     end
 end

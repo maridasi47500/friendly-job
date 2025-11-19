@@ -20,7 +20,9 @@ class JoboffersTest < ApplicationSystemTestCase
     fill_in "Experience", with: @joboffer.experience
     fill_in "Mydate", with: @joboffer.mydate
     fill_in "Mylength", with: @joboffer.mylength
+    fill_in "Secteur", with: @joboffer.secteur_id
     fill_in "Status", with: @joboffer.status
+    fill_in "Title", with: @joboffer.title
     click_on "Create Joboffer"
 
     assert_text "Joboffer was successfully created"
@@ -37,7 +39,9 @@ class JoboffersTest < ApplicationSystemTestCase
     fill_in "Experience", with: @joboffer.experience
     fill_in "Mydate", with: @joboffer.mydate
     fill_in "Mylength", with: @joboffer.mylength
+    fill_in "Secteur", with: @joboffer.secteur_id
     fill_in "Status", with: @joboffer.status
+    fill_in "Title", with: @joboffer.title
     click_on "Update Joboffer"
 
     assert_text "Joboffer was successfully updated"
