@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :joboffers
   resources :jobs
   get "welcome/index"
   resources :skills
