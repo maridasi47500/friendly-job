@@ -3,7 +3,7 @@ class JoboffersController < ApplicationController
 
   # GET /joboffers or /joboffers.json
   def index
-    @joboffers = Joboffer.all.where("title like '%#{params["title"]}%'#{params[:secteur_activite] == "all" ? "" : " and secteur_id = '#{params[:secteur_activite]}'"}")
+    @joboffers = Joboffer.all.where("title like '%#{params["title"]}%'#{(!params[:secteur_activite] or params[:secteur_activite] == "all") ? "" : " and secteur_id = '#{params[:secteur_activite]}'"}")
 
   end
 

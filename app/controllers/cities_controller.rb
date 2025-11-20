@@ -9,7 +9,7 @@ class CitiesController < ApplicationController
   # GET /cities/1 or /cities/1.json
   def show
 
-     @joboffers=@city.joboffers.where("title like '%#{params["title"]}%'#{params[:secteur_activite] == "all" ? "" : " and secteur_id = '#{params[:secteur_activite]}'"}")
+     @joboffers=@city.joboffers.where("title like '%#{params["title"]}%'#{(!params[:secteur_activite] or params[:secteur_activite] == "all") ? "" : " and secteur_id = '#{params[:secteur_activite]}'"}")
 
   end
 
