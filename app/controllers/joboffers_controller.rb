@@ -3,7 +3,8 @@ class JoboffersController < ApplicationController
 
   # GET /joboffers or /joboffers.json
   def index
-    @joboffers = Joboffer.all
+    @joboffers = Joboffer.all.where("title like '%#{params["title"]}%'#{params[:secteur_activite] == "all" ? "" : " and secteur_id = '#{params[:secteur_activite]}'"}")
+
   end
 
   # GET /joboffers/1 or /joboffers/1.json
@@ -65,6 +66,6 @@ class JoboffersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def joboffer_params
-      params.expect(joboffer: [ :title, :secteur_id, :city_id, :contract_id, :mydate, :mylength, :status, :experience, :dispo ])
+      params.expect(joboffer: [ :title, :secteur_id, :mycity, :contract_id, :mydate, :mylength, :status, :experience, :dispo ])
     end
 end

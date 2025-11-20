@@ -1,0 +1,16 @@
+  <div class="col">
+    <div class="card">
+        <h5 class="card-title" style="background: yellow;"><%=link_to j.title, j%></h5>
+      <div class="card-body">
+
+        <p class="card-text"><strong>&#128462; type de contrat : </strong><%=j.contract.name%></p>
+        <p class="card-text"><strong>&#128205; lieu de travail : </strong><%=j.city.name%></p>
+        <p class="card-text"><strong>&#128197; date de début : </strong><%=j.mydate != "" ? l(j.mydate) : "dès que possible"%></p>
+        <p class="card-text"><strong>&#128344; duree :</strong><%=j.mylength%></p>
+        <p class="card-text"><strong>&#128113; statut :</strong><%=j.status%></p>
+        <p class="card-text"><strong>&#128188; experience :</strong><%=j.experience%></p>
+        <p class="card-text"><strong>&#128504; disponible :</strong><%=j.dispo ? "oui" : "non"%></p>
+      </div>
+    </div>
+  </div>
+

@@ -1,47 +1,53 @@
 <div id="<%= dom_id joboffer %>">
   <p>
-    <strong>Title:</strong>
+    <strong>Référence de l'offre:</strong>
     <%= joboffer.title %>
   </p>
-
   <p>
-    <strong>Secteur:</strong>
-    <%= joboffer.secteur_id %>
+    <strong>type de Contrat:</strong>
+    <%= joboffer.contract.name %>
   </p>
 
   <p>
-    <strong>City:</strong>
-    <%= joboffer.city_id %>
+    <strong>Secteur d'activite:</strong>
+    <%= joboffer.secteur.name %>
   </p>
 
   <p>
-    <strong>Contract:</strong>
-    <%= joboffer.contract_id %>
+    <strong>date de publication:</strong>
+    <%= l(joboffer.created_at) %>
+  </p>
+  <p>
+    <strong>date de debut:</strong>
+    <%= joboffer.mydate != "" ? l(joboffer.mydate) : "dès que possible" %>
+  </p>
+  <p>
+    <strong>lieu de travail:</strong>
+    <%= joboffer.city.name %>
   </p>
 
-  <p>
-    <strong>Mydate:</strong>
-    <%= joboffer.mydate %>
-  </p>
+
+
+
 
   <p>
-    <strong>Mylength:</strong>
+    <strong>durée:</strong>
     <%= joboffer.mylength %>
   </p>
 
   <p>
-    <strong>Status:</strong>
+    <strong>Statut:</strong>
     <%= joboffer.status %>
   </p>
 
   <p>
-    <strong>Experience:</strong>
+    <strong>Expérience:</strong>
     <%= joboffer.experience %>
   </p>
 
   <p>
     <strong>Dispo:</strong>
-    <%= joboffer.dispo %>
+    <%= joboffer.dispo ? "oui" : "non" %>
   </p>
 
 </div>

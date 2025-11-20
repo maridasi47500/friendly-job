@@ -11,3 +11,9 @@ ISO3166::Country.all_translated.each do |country|
     mycountry=Country.find_or_create_by(name: country)
 end
 
+["CDI", "CDD", "Interim"].each do |genre_name|
+  Contract.find_or_create_by!(name: genre_name)
+end
+["BTP Gros Oeuvre","BTP Second Oeuvre","Commerce","Industrie","Tertiaire","Transport/Logistique"].each do |genre_name|
+  Secteur.find_or_create_by!(name: genre_name)
+end

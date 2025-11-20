@@ -1,8 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Job offers en interim" %>
-
-<%=form_with url: joboffers_path, method: :get do |form|%>
+<%= render @city %>
+<%=form_with url: city_path(@city), method: :get do |form|%>
   <div>
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title, value: params[:title] %>
@@ -12,15 +11,11 @@
     <%= form.select :secteur_activite, ["all"]+Secteur.all.collect {|h|[h.name, h.id]}, {selected: params[:secteur_activite]}%>
 
   </div>
-  <div> 
+  <div>
     <%= form.submit %>
   </div>
 
 
-<%end%>
-<h1>Job offers en interim</h1>
-<%City.all.each do |city|%>
-<%=link_to "offre d'emploi #{city.name}", city%>
 <%end%>
 
 <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -29,6 +24,14 @@
 <%else%>
 <p class="aucuneoffre"> Il n'y a aucune offre à afficher. </p>
 <%end%>
+
+
 </div>
 
-<%= link_to "New joboffer", new_joboffer_path %>
+
+<div>
+  <%= link_to "Edit this city", edit_city_path(@city) %> |
+  <%= link_to "Back to cities", cities_path %>
+
+  <%= button_to "Destroy this city", @city, method: :delete %>
+</div>

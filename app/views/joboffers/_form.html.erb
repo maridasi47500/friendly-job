@@ -18,42 +18,52 @@
 
   <div>
     <%= form.label :secteur_id, style: "display: block" %>
-    <%= form.number_field :secteur_id %>
+    <%= form.select :secteur_id, Secteur.all.collect {|h|[h.name, h.id]}%>
   </div>
 
   <div>
-    <%= form.label :city_id, style: "display: block" %>
-    <%= form.number_field :city_id %>
+    <%= form.label :mycity, style: "display: block" %>
+    <%= form.text_field :mycity%>
   </div>
 
   <div>
     <%= form.label :contract_id, style: "display: block" %>
-    <%= form.number_field :contract_id %>
+    <%= form.select :contract_id, Contract.all.collect {|h|[h.name, h.id]} %>
   </div>
 
   <div>
     <%= form.label :mydate, style: "display: block" %>
-    <%= form.text_field :mydate %>
+    <%= form.date_field :mydate %>
   </div>
 
   <div>
+    <%@hi=["En vue d'embauche", "1 semaine évolutif", "1 mois UNIQUEMENT les Week-End", "Minimum 6 mois", "Autre"]%>
     <%= form.label :mylength, style: "display: block" %>
+<%if joboffer.mylength.try(:length).to_i == 0 or @hi.include?(joboffer.mylength)%>
+    <%= form.select :mylength, @hi, {}, {onchange: "(this.value === \"Autre\" ? this.outerHTML = '<input name=\"joboffer[mylength]\" id=\"joboffer_mylength\" type=\"text\" />' : console.log('hey')); return false;"} %>
+<%else%>
     <%= form.text_field :mylength %>
+<%end%>
   </div>
 
   <div>
-    <%= form.label :status, style: "display: block" %>
+    <%= form.label :status, "statut (par exemple Non cadre)", style: "display: block" %>
     <%= form.text_field :status %>
   </div>
 
   <div>
     <%= form.label :experience, style: "display: block" %>
-    <%= form.text_field :experience %>
+    <%@hey= ["1 an minimum sur le même poste", "1an", "6 mois minimum sur le même poste", "2 ans minimum", "Minimum 3 ans sur un poste similaire", "4 ans", "Autre"] %>
+<%if joboffer.experience.try(:length).to_i == 0 or @hey.include?(joboffer.experience)%>
+    <%= form.select :experience, @hey, {}, {onchange: "(this.value === \"Autre\" ? this.outerHTML = '<input name=\"joboffer[experience]\" id=\"joboffer_experience\" type=\"text\" />' : console.log('hey')); return false;"} %>
   </div>
+<%else%>
+    <%= form.text_field :experience %>
+<%end%>
 
   <div>
     <%= form.label :dispo, style: "display: block" %>
-    <%= form.number_field :dispo %>
+    <%= form.select :dispo, [["oui", 1], ["non", 0]] %>
   </div>
 
   <div>
