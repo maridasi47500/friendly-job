@@ -62,8 +62,12 @@
 <%end%>
 
   <div>
-    <%= form.label :dispo, style: "display: block" %>
-    <%= form.select :dispo, [["oui", 1], ["non", 0]] %>
+    <%= form.label :dispo, "disponibilité par exemple 'Horaires variables et flexibles, incluant le travail le weekend et les jours fériés'", style: "display: block" %>
+    <%= form.text_area :dispo %>
+  </div>
+  <div>
+    <%= form.label :salaire, "salaire heure brut", style: "display: block" %>
+    <%= form.number_field :salaire %>
   </div>
 
   <div>

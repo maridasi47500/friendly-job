@@ -9,7 +9,7 @@ class CreateJoboffers < ActiveRecord::Migration[8.0]
       t.string :mylength
       t.string :status
       t.string :experience
-      t.integer :dispo
+      t.string :dispo
 
       t.timestamps
     end

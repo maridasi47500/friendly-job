@@ -9,7 +9,7 @@
         <p class="card-text"><strong>&#128344; duree :</strong><%=j.mylength%></p>
         <p class="card-text"><strong>&#128113; statut :</strong><%=j.status%></p>
         <p class="card-text"><strong>&#128188; experience :</strong><%=j.experience%></p>
-        <p class="card-text"><strong>&#128504; disponible :</strong><%=j.dispo ? "oui" : "non"%></p>
+        <p class="card-text"><strong>&#128504; disponible :</strong><%=j.dispo.try(:length).to_i > 0 ? "oui" : "non"%></p>
       </div>
     </div>
   </div>
