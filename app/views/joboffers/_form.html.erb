@@ -69,6 +69,18 @@
     <%= form.label :salaire, "salaire heure brut", style: "display: block" %>
     <%= form.number_field :salaire %>
   </div>
+  <div>
+    <%= form.label :profil, style: "display: block" %>
+    <%= form.text_area :profil %>
+  </div>
+  <div>
+    <%= form.label :competence, style: "display: block" %>
+    <%= form.text_area :competence %>
+  </div>
+  <div>
+    <%= form.label :mission, style: "display: block" %>
+    <%= form.text_area :mission %>
+  </div>
 
   <div>
     <%= form.submit %>

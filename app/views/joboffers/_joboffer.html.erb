@@ -44,6 +44,18 @@
     <%= joboffer.salaire %>€ brut
   </p>
 <h3>Description du poste</h3>
+<%if joboffer.mission.try(:length).to_i > 0%>
+  <p>
+    <strong>mission:</strong>
+    <%= joboffer.mymission.html_safe %>
+  </p>
+<%end%>
+<%if joboffer.competence.try(:length).to_i > 0%>
+  <p>
+    <strong>competence:</strong>
+    <%= joboffer.mycompetence.html_safe %>
+  </p>
+<%end%>
   <p>
     <strong>durée:</strong>
     <%= joboffer.mylength %>
@@ -52,6 +64,12 @@
     <strong>Statut:</strong>
     <%= joboffer.status %>
   </p>
+<%if joboffer.profil.try(:length).to_i > 0%>
+  <p>
+    <strong>profil:</strong>
+    <%= joboffer.myprofil.html_safe %>
+  </p>
+<%end%>
 
   <p>
     <strong>Expérience:</strong>

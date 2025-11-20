@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_20_111408) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_20_120444) do
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -45,10 +45,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_20_111408) do
     t.string "mylength"
     t.string "status"
     t.string "experience"
-    t.integer "dispo"
+    t.string "dispo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "salaire"
+    t.string "profil"
+    t.string "mission"
+    t.string "competence"
+    t.string "integer"
   end
 
   create_table "jobs", force: :cascade do |t|
