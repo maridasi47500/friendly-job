@@ -24,9 +24,15 @@ class SkillsController < ApplicationController
     @skill = Skill.new(skill_params)
 
     respond_to do |format|
-      if @skill.save
-        format.html { redirect_to @skill, notice: "Skill was successfully created." }
-        format.json { render :show, status: :created, location: @skill }
+      if @skill.save 
+        if @skill.job_id.to_i > 0
+        
+          format.html { redirect_to job_path(@skill.job_id), notice: "Skill was successfully created." }
+          format.json { render :show, status: :created, location: @skill }
+        else
+          format.html { redirect_to @skill, notice: "Skill was successfully created." }
+          format.json { render :show, status: :created, location: @skill }
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @skill.errors, status: :unprocessable_entity }
@@ -65,6 +71,6 @@ class SkillsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def skill_params
-      params.expect(skill: [ :name ])
+      params.expect(skill: [ :name, :job_id ])
     end
 end

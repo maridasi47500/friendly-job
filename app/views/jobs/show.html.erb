@@ -3,14 +3,41 @@
 <%= render @job %>
 
 <%if user_signed_in?%>
-<h5>Example heading <span class="badge text-bg-secondary" onclick="$('.modal').show();">&#128142; <%=(@job.skill_ids & current_user.skill_ids).length%> des <%=@job.skills.length%> compétences correspondantes </span></h5>
+<h5>compétences que j'ai par rapport à ce job <span class="badge text-bg-secondary" onclick="$('.modal').show();">&#128142; <%=(@job.skill_ids & current_user.skill_ids).length%> des <%=@job.skills.length%> compétences correspondantes </span></h5>
 
 <%end%>
+<h2>toutes les competences quil faut pour ce job</h2>
 <%@job.skills.each do |s|%>
 <li>
 <%=s.name%>
 </li>
 <%end%>
+<h3>ajouter une skill à ce job</h3>
+<%skill=Skill.new%>
+<%skill.job_id=@job.id%>
+<%= form_with(model: skill) do |form| %>
+  <% if skill.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(skill.errors.count, "error") %> prohibited this skill from being saved:</h2>
+
+      <ul>
+        <% skill.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+    <%= form.hidden_field :job_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
 
 
 <%if user_signed_in?%>
