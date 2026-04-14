@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  resources :posts
   resources :cities
   resources :joboffers
-  resources :jobs
+  resources :jobs do
+    collection do
+      get "mypage"
+    end
+  end
   get "welcome/index"
   resources :skills
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }

@@ -1,0 +1,150 @@
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e9ebee;
+      margin: 0;
+    }
+    .topbar {
+      background: #1877f2;
+      color: white;
+      padding: 10px 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .container {
+      width: 900px;
+      margin: 20px auto;
+    }
+    .cover {
+      background: #ccc;
+      height: 250px;
+      position: relative;
+    }
+    .profile-pic {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid white;
+      position: absolute;
+      bottom: -80px;
+      left: 20px;
+      background: url("https://via.placeholder.com/160") center/cover no-repeat;
+    }
+    .profile-info {
+      background: white;
+      padding: 60px 20px 20px 20px;
+      border: 1px solid #ddd;
+      margin-top: -20px;
+    }
+    .profile-name {
+      font-size: 26px;
+      font-weight: bold;
+    }
+    .profile-details {
+      color: #555;
+      margin-top: 5px;
+    }
+    .content {
+      display: flex;
+      margin-top: 20px;
+      gap: 20px;
+    }
+    .sidebar, .timeline {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 15px;
+    }
+    .sidebar {
+      width: 30%;
+    }
+    .timeline {
+      width: 70%;
+    }
+    .section-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .post {
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+    .post-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .post-time {
+      color: #777;
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+    .post-text {
+      margin-bottom: 8px;
+    }
+    .post-actions span {
+      color: #65676b;
+      font-size: 13px;
+      margin-right: 15px;
+      cursor: pointer;
+    }
+    .post-actions span:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <div class="topbar">facebook</div>
+
+  <div class="container">
+    <!-- Couverture + photo de profil -->
+    <div class="cover">
+      <div class="profile-pic"></div>
+    </div>
+
+    <!-- Infos profil -->
+    <div class="profile-info">
+      <div class="profile-name">Anne Honyme</div>
+      <div class="profile-details">
+        Développeur web chez ExempleCorp · Habite à Paris · De Lyon
+      </div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="content">
+      <!-- Colonne gauche -->
+      <div class="sidebar">
+        <div class="section-title">À propos</div>
+        <p><strong>Travail :</strong> Développeur web</p>
+        <p><strong>Études :</strong> Université de Technologie</p>
+        <p><strong>Ville actuelle :</strong> Paris</p>
+        <p><strong>Originaire de :</strong> Lyon</p>
+      </div>
+
+
+
+      <!-- Timeline / publications -->
+      <div class="timeline">
+<h1>New post</h1>
+<div>
+<%= render "posts/form", post: Post.new(user_id: current_user.id) %>
+</div>
+        <div class="section-title">Publications</div>
+<%current_user.posts.each do |post|%>
+
+        <div class="post">
+          <div class="post-header">anne onyme</div>
+          <div class="post-time">Il y a 2 h · Public</div>
+          <div class="post-text">
+           <%=post.content%> 
+          </div>
+          <div class="post-actions">
+            <span>J’aime</span>
+            <span>Commenter</span>
+            <span>Partager</span>
+          </div>
+        </div>
+<%end%>
+
+
+      </div>
+    </div>
+  </div>
+
