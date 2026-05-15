@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_04_14_133116) do
+ActiveRecord::Schema[8.0].define(version: 2026_05_15_013920) do
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -34,6 +34,17 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_14_133116) do
     t.integer "skill_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "jobofferhastags", force: :cascade do |t|
+    t.integer "joboffer_id", null: false
+    t.integer "user_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["joboffer_id"], name: "index_jobofferhastags_on_joboffer_id"
+    t.index ["tag_id"], name: "index_jobofferhastags_on_tag_id"
+    t.index ["user_id"], name: "index_jobofferhastags_on_user_id"
   end
 
   create_table "joboffers", force: :cascade do |t|
@@ -81,6 +92,13 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_14_133116) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "couleur"
+  end
+
   create_table "userhasskills", force: :cascade do |t|
     t.integer "skill_id"
     t.integer "user_id"
@@ -102,4 +120,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_14_133116) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "jobofferhastags", "joboffers"
+  add_foreign_key "jobofferhastags", "tags"
+  add_foreign_key "jobofferhastags", "users"
 end

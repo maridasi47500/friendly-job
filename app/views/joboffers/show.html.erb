@@ -1,6 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
+<%= render @joboffer.jobofferhastags %>
 <%= render @joboffer %>
+<%if user_signed_in?%>
+<p>
+new tag
+<%= render "jobofferhastags/form", jobofferhastag: Jobofferhastag.new(user: current_user, joboffer: @joboffer) %>
+
+</p>
+<p>
+new tag and enter tag name
+<%= render "jobofferhastags/otherform", jobofferhastag: Jobofferhastag.new(user: current_user, joboffer: @joboffer, tag: Tag.new) %>
+
+</p>
+<%end%>
 
 <div>
   <%= link_to "Edit this joboffer", edit_joboffer_path(@joboffer) %> |

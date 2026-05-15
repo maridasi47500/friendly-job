@@ -1,0 +1,33 @@
+<%= form_with(model: jobofferhastag) do |form| %>
+  <% if jobofferhastag.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(jobofferhastag.errors.count, "error") %> prohibited this jobofferhastag from being saved:</h2>
+
+      <ul>
+        <% jobofferhastag.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%#= form.label :joboffer_id, style: "display: block" %>
+    <%= form.hidden_field :joboffer_id %>
+  </div>
+
+  <div>
+    <%#= form.label :user_id, style: "display: block" %>
+
+    <%= form.hidden_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.label :tag_id, style: "display: block" %>
+    <%= form.collection_select :tag_id, Tag.all, :id, :name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

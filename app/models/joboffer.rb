@@ -2,6 +2,7 @@ class Joboffer < ApplicationRecord
 belongs_to :contract
 belongs_to :city
 belongs_to :secteur
+has_many :jobofferhastags
 def myprofil
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
     markdown.render(read_attribute(:profil).to_s)

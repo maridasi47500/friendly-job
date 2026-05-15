@@ -43,6 +43,8 @@
     <strong>salaire:</strong>
     <%= joboffer.salaire %>€ brut
   </p>
+<%= render joboffer.jobofferhastags %>
+
 <h3>Description du poste</h3>
 <%if joboffer.mission.try(:length).to_i > 0%>
   <p>

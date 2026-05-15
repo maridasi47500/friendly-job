@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :jobofferhastags
+  resources :tags
   resources :posts
   resources :cities
   resources :joboffers
